@@ -1,1 +1,1 @@
-# Jyu-nyu_Study
+# Jyu-nyu Study
