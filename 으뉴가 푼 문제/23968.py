@@ -22,4 +22,4 @@ def bubble_sort(arr, n , k):
 input = sys.stdin.readline
 n, k = map(int, input().rstrip().split()) # 배열 크기, 교환 횟수
 arr = list(map(int, input().rstrip().split())) # 배열 입력 받기           
-bubble_sort(arr, n, k)      
+bubble_sort(arr, n, k) # 버블 정렬 실행
