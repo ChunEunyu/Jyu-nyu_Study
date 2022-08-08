@@ -1,33 +1,31 @@
 import sys
-input = sys.stdin.readline
 
-def insertion_sort(A, N, K):
-    c = 0
-    for i in range(1, N):
-        m = A[i]
-        l = i-1
-        while(l >= 0):
-            if A[l] > m:
-                c+=1
-                if c == K:
-                    print(A[l])
-                A[l+1] = A[l]
-                l -= 1
+def insertion_sort(arr, n, k):
+    cnt = 0
+    for i in range(1, n):
+        key = arr[i]
+        for j in reversed(range(i)):
+            if key < arr[j]:
+                cnt+=1
+                if cnt == k:
+                    print(arr[j])
+                arr[j+1] = arr[j]
+                if j == 0:
+                    cnt+=1
+                    if cnt == k:
+                        print(key)
+                    arr[0]=key
             else:
-                if A[l+1] != m:
-                    c+=1
-                    if c == K:
-                        print(m)
-                    A[l+1] = m
+                if arr[j+1] != key:
+                    cnt+=1
+                    if cnt == k:
+                        print(key)
+                arr[j+1]=key
                 break
-        if l < 0:
-            c+=1
-            if c == K:
-                print(m)
-            A[0]=m
-    if c < K:
-        print(-1)
+    if cnt < k:
+        print(-1)         
 
-N, K = map(int, input().split())
-A = list(map(int, input().split()))
-insertion_sort(A, N, K)
+input = sys.stdin.readline
+n, k = map(int, input().split()) # 배열 크기, 교환 횟수
+arr = list(map(int, input().split())) # 배열 입력 받기    
+insertion_sort(arr, n, k)
