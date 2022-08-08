@@ -2,13 +2,14 @@ import sys
 
 def insertion_sort(arr, n, k):
     cnt = 0
-    for i in range(n):
-        key = arr[i] 
-        for j in range(i, 0, -1): 
+    for i in range(1, n):
+        key = arr[i]
+        for j in reversed(range(i)): 
             if key < arr[j-1]:
                 cnt += 1
                 if cnt != k:
-                    arr[j-1], arr[j] = arr[j], arr[j-1]
+                    arr[j+1] = arr[j]
+                    arr[j] = key
                 else:
                     print(f"{arr[j]}")
                     break
