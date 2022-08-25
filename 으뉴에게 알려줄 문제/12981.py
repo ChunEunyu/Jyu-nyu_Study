@@ -11,23 +11,28 @@ ex) RR (GGG) (BBB) BB > (GGG) (BBB) (RB) (RB)
 이거만 따로 if문으로 구별해주면 완성!!
 """
 import sys
+
 input=sys.stdin.readline
 R,G,B=map(int,input().split())
-s=0
-z=0
-if R%3==0:
-    z+=1
-s+=R//3
-R%=3
-if G%3==0:
-    z+=1
-s+=G//3
-G%=3
-if B%3==0:
-    z+=1
-s+=B//3
-B%=3
-if z==2:
-    print(s+1)
-else:
-    print(s+max(R,G,B))
+s=0 # 상자 개수
+z=0 # 
+
+if R%3 == 0: # R이 3으로 나누어 떨어짐
+    z += 1 # z는 1 증가
+s += R//3 # 나눈 몫을 상자 개수에 더함 
+R %= 3 # R에 나머지 공 저장
+
+if G%3 == 0: # G가 3으로 나누어 떨어짐
+    z += 1 # z는 1 증가
+s += G//3 # 나눈 몫을 상자 개수에 더함
+G %= 3 # G에 나머지 공 저장
+
+if B%3 == 0: # B가 3으로 나누어 떨어짐
+    z += 1 # z는 1 증가
+s += B//3 # 나눈 몫을 상자 개수에 더함
+B %= 3 # B에 나머지 공 저장
+
+if z == 2: # R, G, B 중 2 개가 3으로 나누어 떨어짐
+    print(s+1) # 상자 개수를 하나 추가하여 출력
+else: # R, G, B 중 0, 1, 3 개가 3으로 나누어 떨어짐
+    print(s+max(R,G,B)) # 
