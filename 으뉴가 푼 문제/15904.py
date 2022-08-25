@@ -8,7 +8,7 @@ for s in str1:
     if 65 <= ord(s) < 97:
         res += s
 
-if "UCPC" in res:
+if res[0:4] == "UCPC":
     print('I love UCPC')
 else:
     print('I hate UCPC')
