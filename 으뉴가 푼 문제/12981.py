@@ -1,21 +1,27 @@
-import sys
-
-def div_ball(ball):
-    global i
-    if ball % 3 == 0:
-        ball = ball % 3
-        i += ball // 3
-    elif ball % 2 == 0:
-        ball = ball % 2
-        i += ball // 2
-    return ball
-        
+import sys        
     
 input = sys.stdin.readline
 r, g, b = map(int, input().split())
 
-i = 0
-if div_ball(r)+div_ball(g)+div_ball(b) >= 1:
-    i += 1
-    
-print(i)
+box = 0
+mod_is_0 = 0
+
+if r % 3 == 0:
+    mod_is_0 += 1
+box += r // 3
+r %= 3
+
+if g % 3 == 0:
+    mod_is_0 += 1
+box += g // 3
+g %= 3
+
+if b % 3 == 0:
+    mod_is_0 += 1
+box += b // 3
+b %= 3
+
+if mod_is_0 == 2:
+    print(box+1)
+else:
+    print(box+max(r,g,b))
